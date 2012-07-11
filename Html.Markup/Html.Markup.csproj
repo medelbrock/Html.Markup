@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B210D3DA-A295-4B49-AE88-66B54C133A1E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Html.Markup</RootNamespace>
+    <AssemblyName>Html.Markup</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Attributes\AttributePair.cs" />
+    <Compile Include="Attributes\Background\Background.cs" />
+    <Compile Include="Attributes\Background\BackgroundRepeat.cs" />
+    <Compile Include="Attributes\Border\Border.cs" />
+    <Compile Include="Attributes\Border\BorderProperties.cs" />
+    <Compile Include="Attributes\Boxing\ContentFlow.cs" />
+    <Compile Include="Attributes\Boxing\Overflow.cs" />
+    <Compile Include="Attributes\Dimensions\Dimensions.cs" />
+    <Compile Include="Attributes\Display\Clear.cs" />
+    <Compile Include="Attributes\Display\Display.cs" />
+    <Compile Include="Attributes\Display\VerticalAlign.cs" />
+    <Compile Include="Attributes\Display\Visibility.cs" />
+    <Compile Include="Attributes\Font\Font.cs" />
+    <Compile Include="Attributes\Font\FontStyle.cs" />
+    <Compile Include="Attributes\Font\FontVariant.cs" />
+    <Compile Include="Attributes\Generic\Cursor.cs" />
+    <Compile Include="Attributes\Generic\LineStyle.cs" />
+    <Compile Include="Attributes\Input\InputType.cs" />
+    <Compile Include="Attributes\ListStyle\ListPosition.cs" />
+    <Compile Include="Attributes\ListStyle\ListStyle.cs" />
+    <Compile Include="Attributes\ListStyle\ListStyleType.cs" />
+    <Compile Include="Attributes\Margin\Margin.cs" />
+    <Compile Include="Attributes\Metrics\MarkupMetric.cs" />
+    <Compile Include="Attributes\Metrics\Metrics.cs" />
+    <Compile Include="Attributes\Padding\Padding.cs" />
+    <Compile Include="Attributes\Positioning\Coordinate.cs" />
+    <Compile Include="Attributes\Positioning\Float.cs" />
+    <Compile Include="Attributes\Positioning\Position.cs" />
+    <Compile Include="Attributes\Positioning\Positioning.cs" />
+    <Compile Include="Attributes\StyleAttributes.cs" />
+    <Compile Include="Attributes\Text\Align.cs" />
+    <Compile Include="Attributes\Text\Decoration.cs" />
+    <Compile Include="Attributes\Text\Text.cs" />
+    <Compile Include="Elements\Anchor.cs" />
+    <Compile Include="Elements\Br.cs" />
+    <Compile Include="Elements\Div.cs" />
+    <Compile Include="Elements\Input\Input.cs" />
+    <Compile Include="Elements\Input\InputButton.cs" />
+    <Compile Include="Elements\Input\InputCheckbox.cs" />
+    <Compile Include="Elements\Input\InputHidden.cs" />
+    <Compile Include="Elements\Input\InputRadio.cs" />
+    <Compile Include="Elements\Input\InputSubmit.cs" />
+    <Compile Include="Elements\Input\InputText.cs" />
+    <Compile Include="Elements\Li.cs" />
+    <Compile Include="Elements\Ol.cs" />
+    <Compile Include="Elements\Option.cs" />
+    <Compile Include="Elements\Paragraph.cs" />
+    <Compile Include="Elements\ParsedHtml.cs" />
+    <Compile Include="Elements\Select.cs" />
+    <Compile Include="Elements\Span.cs" />
+    <Compile Include="Elements\Table.cs" />
+    <Compile Include="Elements\Td.cs" />
+    <Compile Include="Elements\Th.cs" />
+    <Compile Include="Elements\Tr.cs" />
+    <Compile Include="Elements\Ul.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="HandleException.cs" />
+    <Compile Include="Markup.cs" />
+    <Compile Include="MarkupException.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
