@@ -53,12 +53,6 @@ You can generate dynamic jQuery objects
 - - -
 Markup includes properties that every Document Object contains. The class is *abstract* and only inherited by the Element classes. Currently the following elements are supported:
 **Anchor**,	**Br**, **Div**, **Li**, **Ol**, **Option**, **Paragraph**,**ParsedHtml** (raw html), **Select**, **Span**, **Table**, **Td**, **Tr**, **Th**, **Ul**, **Input and input types**  
-
-###Markup styling and attributes
-- - -
-Each Markup element has an inline-style object called **StyleAttributes**. The properties are broken out into general categories based on CSS rule groupings.  
-**Font**, **Background**, **Border**, **LineStyle**, **Overflow**, **Dimensions**, **Margin**, **Padding**, **Float**, **Cursor**, **Display**, **Visibility**, **Position**, **Color**, **Line height**, **Vertical align**, **Text**  
-  
 The Markup class a Parent Child element relationship as well. You can either wrap a Markup element into a parent or children an iteration of Markup elements. When the parent is called to render, it will render all contained elements.
 #####C\# syntax
 	Div d = new Div
@@ -125,6 +119,12 @@ One step further is to wrap multiple children into a parent
         public VerticalAlign VerticalAlign { get; set; }
         public Text Text { get; set; }
 	}
+###Markup styling and attributes
+- - -
+Each Markup element has an inline-style object called **StyleAttributes**. The properties are broken out into general categories based on CSS rule groupings.  
+**Font**, **Background**, **Border**, **LineStyle**, **Overflow**, **Dimensions**, **Margin**, **Padding**, **Float**, **Cursor**, **Display**, **Visibility**, **Position**, **Color**, **Line height**, **Vertical align**, **Text**  
+  
+
 These groups are mainly created with sub classes created with *public static readonly* properties with a private constructor and an implicit operator. The ListStyleType class is listed below to show how they are built.
 #####C\# syntax
 	public sealed class ListStyleType
@@ -179,3 +179,25 @@ When you use this property, it acts like an Enum. The following sets a span to d
 			Display = Display.InlineBlock
 		}
 	};
+
+More complex
+#####C\# syntax
+	Span s = new Span
+	{
+		Text = "This is inline block",
+		Class = "css-class1 css-class2",
+		Width = 130,
+		Style = new StyleAttributes
+		{
+			Display = Display.InlineBlock,
+			Margin = new Margin(0,0,0,5),
+			Float = Float.Right,
+			Color = "#CCCCCC",
+			Padding = new Padding(2),
+			Font = new Font(size:14)
+		}
+	};
+#####Html rendered
+	<span style="font-size:14px;width:130px;margin-top:0px;margin-right:0px;margin-left:5px;margin-bottom:0px;padding:2px;float:right;display:inline-block;color:#CCCCCC" class="css-class1 css-class2">This is inline block</span>
+
+*More documentation coming soon*
