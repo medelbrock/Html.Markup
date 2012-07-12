@@ -42,11 +42,11 @@ You can generate dynamic jQuery objects
 		};
 	}
 #####Javascript syntax
-	var option = $("<option/>");
+	var select = $("<select/>");
 	$.get("/ajaxservice")
 	.done(function(markup) {
 		$.each(markup, function(k,v) {
-			$(v).appendTo(option);
+			$(v).appendTo(select);
 		});
 	});
 ###Markup properties
