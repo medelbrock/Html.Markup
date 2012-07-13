@@ -1,5 +1,11 @@
 Html.Markup 
 ==
+**[Html.Markup in .ASPX web applications](https://github.com/medelbrock/Html.Markup#htmlmarkup-in-aspx-web-applications)**  
+**[Html.Markup in MVC3/MVC4](https://github.com/medelbrock/Html.Markup#htmlmarkup-in-mvc3mvc4)**  
+**[Html.Markup into jQuery objects](https://github.com/medelbrock/Html.Markup#markup-properties)**  
+**[Markup properties](https://github.com/medelbrock/Html.Markup#markup-properties)**  
+**[Markup styling and attributes](https://github.com/medelbrock/Html.Markup#markup-styling-and-attributes)**  
+
 Html.Markup is a library that was created to assist in generating implicit html markup using C\# codebehind.
 This library is a work in progress and additions are more than welcome. All of the elements inherit from Html.Markup and follow the same structure of a DOM hierarchy.
 The class uses implicit string conversion and overrides the *ToString()* method which allows you to push it as you would a string.
@@ -24,7 +30,7 @@ Using Html.Markup in MVC is easier to use than forms because all you need is the
 	@model Html.Markup
 	@Html.Raw(@Model)
 
-Html.Markup into jQuery objects using an ajax service
+Html.Markup into jQuery objects
 ---
 You can generate dynamic jQuery objects 
 #####C\# syntax
@@ -52,8 +58,8 @@ You can generate dynamic jQuery objects
 ###Markup properties
 - - -
 Markup includes properties that every Document Object contains. The class is *abstract* and only inherited by the Element classes. Currently the following elements are supported:
-**Anchor**,	**Br**, **Div**, **Li**, **Ol**, **Option**, **Paragraph**,**ParsedHtml** (raw html), **Select**, **Span**, **Table**, **Td**, **Tr**, **Th**, **Ul**, **Input and input types**  
-The Markup class a Parent Child element relationship as well. You can either wrap a Markup element into a parent or children an iteration of Markup elements. When the parent is called to render, it will render all contained elements.
+**Anchor**,	**Br**, **Div**, **Li**, **Ol**, **Option**, **Paragraph**,**ParsedHtml** (raw html), **Select**, **Span**, **Table**, **Td**, **Tr**, **Th**, **Ul**,**TextArea**, **Input and input types**  
+The Markup class a Parent Child element relationship as well. You can either wrap a child Markup or wrap an array of children.
 #####C\# syntax
 	Div d = new Div
 	{

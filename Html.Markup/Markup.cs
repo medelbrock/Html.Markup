@@ -32,22 +32,11 @@ namespace Html.Markup
         public int? Height { get; set; }
 
         public string Html { get; set; }
-
-        private bool _LoadLists { get; set; }
-
+        
         public Markup()
         {
-            _LoadLists = true;
-        }
-
-        public void LoadLists()
-        {
-            if (_LoadLists)
-            {
-                AttrList = new List<AttributePair>();
-                Attributes = new List<AttributePair>();
-                _LoadLists = false;
-            }
+            AttrList = new List<AttributePair>();
+            Attributes = new List<AttributePair>();
         }
 
         public static implicit operator string(Markup n)
@@ -57,7 +46,6 @@ namespace Html.Markup
 
         public override string ToString()
         {
-            LoadLists();
             if (!string.IsNullOrEmpty(Html))
                 return Html;
             if (!string.IsNullOrEmpty(ID))

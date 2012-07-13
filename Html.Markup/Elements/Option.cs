@@ -19,7 +19,6 @@
 
         public override string ToString()
         {
-            LoadLists();
             if (!string.IsNullOrEmpty(Value))
                 AttrList.Add(new AttributePair { Set = "value", Value = Value });
             if (Selected)

@@ -6,6 +6,68 @@ namespace Html.Markup
 {
     public static class Extensions
     {
+        public static bool CanParseToInt(this string s)
+        {
+            if (string.IsNullOrEmpty(s)) return false;
+            for (int i = 0; i < s.Length; i++)
+                if (!char.IsNumber(s[i]))
+                    return false;
+            return true;
+        }
+        public static bool InputIsChecked(this string s)
+        {
+            return s == "on" ? true : false;
+        }
+        public static T Assume<T>(this bool? n, T ifNull = default(T))
+        {
+            if (!n.HasValue)
+                return ifNull;
+            else
+                return (T)Convert.ChangeType(n, typeof(T));
+        }
+
+        public static T Assume<T>(this DateTime? n, T ifNull = default(T))
+        {
+            if (!n.HasValue)
+                return ifNull;
+            else
+                return (T)Convert.ChangeType(n, typeof(T));
+        }
+
+        public static T Assume<T>(this int? n, T ifNull = default(T))
+        {
+            if (!n.HasValue)
+                return ifNull;
+            else
+                return (T)Convert.ChangeType(n, typeof(T));
+        }
+        public static T Assume<T>(this decimal? n, T ifNull = default(T))
+        {
+            if (!n.HasValue)
+                return ifNull;
+            else
+                return (T)Convert.ChangeType(n, typeof(T));
+        }
+        public static string AssumeFormat(this DateTime? n, string format = "MM-dd-yyyy")
+        {
+            if (!n.HasValue)
+                return string.Empty;
+            else
+                return n.Assume<DateTime>().ToString(format);
+        }
+        public static string AssumeFormat(this decimal? n, string format = "C")
+        {
+            if (!n.HasValue)
+                return string.Empty;
+            else
+                return n.Assume<decimal>().ToString(format);
+        }
+        public static IEnumerable<char> CastAsCharacter(this int[] n)
+        {
+            for (int i = 0; i < n.Length; i++)
+                yield return (char)n[i];
+        }
+
         public static Markup FindChild(this Markup m, Func<Markup, bool> p)
         {
             try

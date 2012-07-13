@@ -90,6 +90,7 @@
     <Compile Include="Elements\Span.cs" />
     <Compile Include="Elements\Table.cs" />
     <Compile Include="Elements\Td.cs" />
+    <Compile Include="Elements\TextArea.cs" />
     <Compile Include="Elements\Th.cs" />
     <Compile Include="Elements\Tr.cs" />
     <Compile Include="Elements\Ul.cs" />

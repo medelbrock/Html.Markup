@@ -17,7 +17,6 @@
 
         public override string ToString()
         {
-            LoadLists();
             AttrList.Add(new AttributePair { Set = "href", Value = Href });
             return base.ToString();
         }
