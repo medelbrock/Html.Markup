@@ -3,7 +3,7 @@
     public sealed class Anchor : Markup
     {
         public string Href { get; set; }
-
+        public Target Target { get; set; }
         protected override string Tag { get { return "a"; } }
 
         public Anchor(string id = null, StyleAttributes style = null, string cssClass = null, string text = null)
@@ -17,7 +17,10 @@
 
         public override string ToString()
         {
-            AttrList.Add(new AttributePair { Set = "href", Value = Href });
+            if (Target != null)
+                AttrList.Add(new AttributePair { Set = "target", Value = Target });
+            if (!string.IsNullOrEmpty(Href))
+                AttrList.Add(new AttributePair { Set = "href", Value = Href });
             return base.ToString();
         }
     }

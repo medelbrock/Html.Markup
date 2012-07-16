@@ -7,9 +7,9 @@ namespace Html.Markup
     {
         protected virtual string Tag { get; set; }
 
-        protected List<AttributePair> AttrList { get; set; }
+        protected IList<AttributePair> AttrList { get; set; }
 
-        public List<AttributePair> Attributes { get; set; }
+        public IList<AttributePair> Attributes { get; set; }
 
         public string ID { get; set; }
 
@@ -32,7 +32,7 @@ namespace Html.Markup
         public int? Height { get; set; }
 
         public string Html { get; set; }
-        
+
         public Markup()
         {
             AttrList = new List<AttributePair>();
@@ -84,8 +84,10 @@ namespace Html.Markup
             if (Class != null)
                 AttrList.Add(new AttributePair { Set = "class", Value = Class });
             List<string> l = new List<string>();
-            Attributes.ForEach(x => { if (!string.IsNullOrEmpty(x.Value))l.Add(string.Format("{0}=\"{1}\"", x.Set, x.Value)); });
-            AttrList.ForEach(x => { if (!string.IsNullOrEmpty(x.Value))l.Add(string.Format("{0}=\"{1}\"", x.Set, x.Value)); });
+            foreach (var x in Attributes)            
+                if (!string.IsNullOrEmpty(x.Value)) l.Add(string.Format("{0}=\"{1}\"", x.Set, x.Value));            
+            foreach (var x in AttrList)            
+                if (!string.IsNullOrEmpty(x.Value)) l.Add(string.Format("{0}=\"{1}\"", x.Set, x.Value));            
             if (this is Br || this is Input)
                 return string.Format("<{0}{1}/>", Tag, l.Count > 0 ? " " + string.Join(" ", l.ToArray()) : string.Join(" ", l.ToArray()), Text, Wrap);
             if (Wrap != null && Children != null)
