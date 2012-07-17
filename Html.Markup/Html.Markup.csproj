@@ -53,6 +53,7 @@
     <Compile Include="Attributes\Font\Font.cs" />
     <Compile Include="Attributes\Font\FontStyle.cs" />
     <Compile Include="Attributes\Font\FontVariant.cs" />
+    <Compile Include="Attributes\Form\EncodedType.cs" />
     <Compile Include="Attributes\Generic\Cursor.cs" />
     <Compile Include="Attributes\Generic\LineStyle.cs" />
     <Compile Include="Attributes\Input\InputType.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Elements\Anchor.cs" />
     <Compile Include="Elements\Br.cs" />
     <Compile Include="Elements\Div.cs" />
+    <Compile Include="Elements\Form.cs" />
     <Compile Include="Elements\Input\Input.cs" />
     <Compile Include="Elements\Input\InputButton.cs" />
     <Compile Include="Elements\Input\InputCheckbox.cs" />
