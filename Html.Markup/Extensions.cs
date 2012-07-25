@@ -6,6 +6,40 @@ namespace Html.Markup
 {
     public static class Extensions
     {
+        public static string UnencodeCharacters(this string s)
+        {
+            if (string.IsNullOrEmpty(s))
+                return string.Empty;
+            return s.Replace("&amp;", "&")  // ampersand
+                 .Replace("&lt;", "<")       // less than
+                 .Replace("&gt;", ">")       // greater than
+                 .Replace("&quot", "\"")     // left opening quotation
+                 .Replace("&#8220;", "“")    // left opening quotation
+                 .Replace("&ldquo;", "“")    // left opening quotation
+                 .Replace("&#8221;", "”")    // right closing quotation
+                 .Replace("&rdquo;", "”")    // right closing quotation
+                 .Replace("&#8216;", "‘")    // left opening single quote
+                 .Replace("&lsquo;", "‘")    // left opening single quote
+                 .Replace("&#8217;", "’")    // right closing single quote
+                 .Replace("&rsquo;", "’")    // right closing single quote
+                 .Replace("&#39;", "'")      // apostrophe
+                 .Replace("&#x0027;", "'")   // apostrophe
+                 .Replace("&apos;", "'");    // apostrophe
+        }
+        public static string EncodeCharacters(this string s)
+        {
+            if (string.IsNullOrEmpty(s))
+                return string.Empty;
+            return s.Replace("&", "&amp;")  // ampersand
+                 .Replace("<", "&lt;")      // less than
+                 .Replace(">", "&gt;")      // greater than
+                 .Replace("\"", "&quot")    // opening double quotation
+                 .Replace("“", "&#8220;")   // left opening double quotation
+                 .Replace("”", "&#8221;")   // right closing double quotation
+                 .Replace("‘", "&#8216;")   // left opening single quote
+                 .Replace("’", "&#8217;")   // right closing single quote
+                 .Replace("'", "&#39;");    // apostrophe
+        }
         public static bool CanParseToInt(this string s)
         {
             if (string.IsNullOrEmpty(s)) return false;

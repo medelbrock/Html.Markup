@@ -89,7 +89,7 @@ namespace Html.Markup
             foreach (var x in AttrList)            
                 if (!string.IsNullOrEmpty(x.Value)) l.Add(string.Format("{0}=\"{1}\"", x.Set, x.Value));            
             if (this is Br || this is Input)
-                return string.Format("<{0}{1}/>", Tag, l.Count > 0 ? " " + string.Join(" ", l.ToArray()) : string.Join(" ", l.ToArray()), Text, Wrap);
+                return string.Format("<{0}{1}/>", Tag, l.Count > 0 ? " " + string.Join(" ", l.ToArray()) : string.Join(" ", l.ToArray()), Text.EncodeCharacters(), Wrap);
             if (Wrap != null && Children != null)
                 throw new MarkupException("Cannot have a wrapped element when children are specified");
             if (Wrap != null)
