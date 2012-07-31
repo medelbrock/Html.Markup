@@ -9,23 +9,7 @@
             All = all;
         }
 
-        public Padding(double? top, double? right)
-        {
-            Top = top;
-            Right = right;
-            Left = right;
-            Bottom = right;
-        }
-
-        public Padding(double? top, double? right, double? bottom)
-        {
-            Top = top;
-            Right = right;
-            Bottom = bottom;
-            Left = bottom;
-        }
-
-        public Padding(double? top, double? right, double? bottom, double? left)
+        public Padding(double? top = null, double? right = null, double? bottom = null, double? left = null)
         {
             Top = top;
             Right = right;

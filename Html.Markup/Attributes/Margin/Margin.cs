@@ -6,23 +6,7 @@
 
         public Margin(double? all) { All = all; }
 
-        public Margin(double? top, double? right)
-        {
-            Top = top;
-            Right = right;
-            Left = right;
-            Bottom = right;
-        }
-
-        public Margin(double? top, double? right, double? bottom)
-        {
-            Top = top;
-            Right = right;
-            Bottom = bottom;
-            Left = bottom;
-        }
-
-        public Margin(double? top, double? right, double? bottom, double? left)
+        public Margin(double? top = null, double? right = null, double? bottom = null, double? left = null)
         {
             Top = top;
             Right = right;

@@ -67,7 +67,6 @@
     <Compile Include="Attributes\Positioning\Coordinate.cs" />
     <Compile Include="Attributes\Positioning\Float.cs" />
     <Compile Include="Attributes\Positioning\Position.cs" />
-    <Compile Include="Attributes\Positioning\Positioning.cs" />
     <Compile Include="Attributes\StyleAttributes.cs" />
     <Compile Include="Attributes\Target.cs" />
     <Compile Include="Attributes\Text\Align.cs" />

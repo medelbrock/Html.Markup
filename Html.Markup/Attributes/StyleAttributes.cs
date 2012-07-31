@@ -42,6 +42,16 @@ namespace Html.Markup
 
         public VerticalAlign VerticalAlign { get; set; }
 
+        public double? Top { get; set; }
+
+        public double? Left { get; set; }
+
+        public double? Right { get; set; }
+
+        public double? Bottom { get; set; }
+
+        public int? ZIndex { get; set; }
+
         public Text Text { get; set; }
 
         public List<AttributePair> Collect { get; set; }
@@ -77,6 +87,16 @@ namespace Html.Markup
                 if (Font.Weight.HasValue)
                     Collect.Add(new AttributePair { Set = "font-weight", Value = Font.Weight.ToString() });
             }
+            if (Top.HasValue)
+                Collect.Add(new AttributePair { Set = "top", Value = Top.ToString() });
+            if (Left.HasValue)
+                Collect.Add(new AttributePair { Set = "left", Value = Left.ToString() });
+            if (Right.HasValue)
+                Collect.Add(new AttributePair { Set = "right", Value = Right.ToString() });
+            if (Bottom.HasValue)
+                Collect.Add(new AttributePair { Set = "bottom", Value = Bottom.ToString() });
+            if (ZIndex.HasValue)
+                Collect.Add(new AttributePair { Set = "z-index", Value = ZIndex.ToString() });
             if (Dimensions != null)
             {
                 if (Dimensions.Height.HasValue)
@@ -159,21 +179,8 @@ namespace Html.Markup
                 Collect.Add(new AttributePair { Set = "cursor", Value = Cursor });
             if (Display != null)
                 Collect.Add(new AttributePair { Set = "display", Value = Display });
-            if (Position != null)
-            {
-                if (Position.Positioning != null)
-                    Collect.Add(new AttributePair { Set = "position", Value = Position.Positioning });
-                if (Position.Left.HasValue)
-                    Collect.Add(new AttributePair { Set = "left", Value = Position.Left.ToString() });
-                if (Position.Top.HasValue)
-                    Collect.Add(new AttributePair { Set = "top", Value = Position.Top.ToString() });
-                if (Position.Right.HasValue)
-                    Collect.Add(new AttributePair { Set = "right", Value = Position.Right.ToString() });
-                if (Position.Bottom.HasValue)
-                    Collect.Add(new AttributePair { Set = "bottom", Value = Position.Bottom.ToString() });
-                if (Position.ZIndex.HasValue)
-                    Collect.Add(new AttributePair { Set = "z-index", Value = Position.ZIndex.ToString() });
-            }
+            if (Position != null)            
+                Collect.Add(new AttributePair { Set = "position", Value = Position });            
             if (LineHeight.HasValue)
                 Collect.Add(new AttributePair { Set = "line-height", Value = string.Format("{0}{1}", LineHeight, LineHeightMetric != null ? LineHeightMetric : "px") });
             if (Text != null)

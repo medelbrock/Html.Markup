@@ -41,13 +41,14 @@ namespace Html.Markup
 
         public static implicit operator string(Markup n)
         {
-            return n.ToString();
+            if (n != null)
+                return n.ToString();
+            else
+                return string.Empty;
         }
 
         public override string ToString()
         {
-            if (!string.IsNullOrEmpty(Html))
-                return Html;
             if (!string.IsNullOrEmpty(ID))
                 AttrList.Add(new AttributePair { Set = "id", Value = ID });
             if (!string.IsNullOrEmpty(Name))
@@ -84,24 +85,24 @@ namespace Html.Markup
             if (Class != null)
                 AttrList.Add(new AttributePair { Set = "class", Value = Class });
             List<string> l = new List<string>();
-            foreach (var x in Attributes)            
-                if (!string.IsNullOrEmpty(x.Value)) l.Add(string.Format("{0}=\"{1}\"", x.Set, x.Value));            
-            foreach (var x in AttrList)            
-                if (!string.IsNullOrEmpty(x.Value)) l.Add(string.Format("{0}=\"{1}\"", x.Set, x.Value));            
+            foreach (var x in Attributes)
+                if (!string.IsNullOrEmpty(x.Value)) l.Add(string.Format("{0}=\"{1}\"", x.Set, x.Value));
+            foreach (var x in AttrList)
+                if (!string.IsNullOrEmpty(x.Value)) l.Add(string.Format("{0}=\"{1}\"", x.Set, x.Value));
             if (this is Br || this is Input)
                 return string.Format("<{0}{1}/>", Tag, l.Count > 0 ? " " + string.Join(" ", l.ToArray()) : string.Join(" ", l.ToArray()), Text.EncodeCharacters(), Wrap);
             if (Wrap != null && Children != null)
                 throw new MarkupException("Cannot have a wrapped element when children are specified");
             if (Wrap != null)
-                return string.Format("<{0}{1}>{2}{3}</{0}>", Tag, l.Count > 0 ? " " + string.Join(" ", l.ToArray()) : string.Join(" ", l.ToArray()), Text, Wrap);
+                return string.Format("<{0}{1}>{2}{3}{4}</{0}>", Tag, l.Count > 0 ? " " + string.Join(" ", l.ToArray()) : string.Join(" ", l.ToArray()), Text, Wrap, !string.IsNullOrEmpty(Html) ? Html : string.Empty);
             if (Children != null && Children.Count() > 0)
             {
                 List<string> ml = new List<string>();
                 foreach (var h in Children)
                     ml.Add(h);
-                return string.Format("<{0}{1}>{2}{3}</{0}>", Tag, l.Count > 0 ? " " + string.Join(" ", l.ToArray()) : string.Join(" ", l.ToArray()), Text, string.Join(string.Empty, ml.ToArray()));
+                return string.Format("<{0}{1}>{2}{3}{4}</{0}>", Tag, l.Count > 0 ? " " + string.Join(" ", l.ToArray()) : string.Join(" ", l.ToArray()), Text, string.Join(string.Empty, ml.ToArray()), !string.IsNullOrEmpty(Html) ? Html : string.Empty);
             }
-            return string.Format("<{0}{1}>{2}</{0}>", Tag, l.Count > 0 ? " " + string.Join(" ", l.ToArray()) : string.Join(" ", l.ToArray()), Text);
+            return string.Format("<{0}{1}>{2}{3}</{0}>", Tag, l.Count > 0 ? " " + string.Join(" ", l.ToArray()) : string.Join(" ", l.ToArray()), Text, !string.IsNullOrEmpty(Html) ? Html : string.Empty);
         }
     }
 }

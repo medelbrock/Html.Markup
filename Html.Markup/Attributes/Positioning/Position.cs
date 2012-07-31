@@ -2,16 +2,27 @@
 {
     public sealed class Position
     {
-        public double? Top { get; set; }
+        private readonly string _attr;
+       
+        private Position(string attr)
+        {
+            _attr = attr;
+        }
 
-        public double? Left { get; set; }
+        public static implicit operator string(Position n)
+        {
+            return n.ToString();
+        }
 
-        public double? Right { get; set; }
+        public override string ToString()
+        {
+            return _attr;
+        }
 
-        public double? Bottom { get; set; }
-
-        public int? ZIndex { get; set; }
-
-        public Positioning Positioning { get; set; }
+        public static readonly Position Static = new Position("static");
+        public static readonly Position Absolute = new Position("absolute");
+        public static readonly Position Fixed = new Position("fixed");
+        public static readonly Position Relative = new Position("relative");
+        public static readonly Position Inherit = new Position("inherit");
     }
 }
