@@ -6,10 +6,17 @@ namespace Html.Markup
 {
     public static class Extensions
     {
+        public static string UnescapeParameter(this string s)
+        {
+            if (!string.IsNullOrEmpty(s))
+                return Uri.UnescapeDataString(s);
+            else
+                return string.Empty;
+        }
         public static string UnencodeCharacters(this string s)
         {
             if (string.IsNullOrEmpty(s))
-                return string.Empty;
+                return s;
             return s.Replace("&amp;", "&")  // ampersand
                  .Replace("&lt;", "<")       // less than
                  .Replace("&gt;", ">")       // greater than
@@ -29,7 +36,7 @@ namespace Html.Markup
         public static string EncodeCharacters(this string s)
         {
             if (string.IsNullOrEmpty(s))
-                return string.Empty;
+                return s;
             return s.Replace("&", "&amp;")  // ampersand
                  .Replace("<", "&lt;")      // less than
                  .Replace(">", "&gt;")      // greater than
@@ -47,6 +54,19 @@ namespace Html.Markup
                 if (!char.IsNumber(s[i]))
                     return false;
             return true;
+        }
+        public static bool CanParseToDate(this string s)
+        {
+            DateTime d = DateTime.MinValue;
+            return DateTime.TryParse(s, out d);
+        }
+        public static bool InsideOf(this string s1, string s2)
+        {
+            if (string.IsNullOrEmpty(s1) || string.IsNullOrEmpty(s2))
+                return false;
+            if (s2.ToLower().Contains(s1.ToLower()))
+                return true;
+            return false;
         }
         public static bool InputIsChecked(this string s)
         {
@@ -100,59 +120,6 @@ namespace Html.Markup
         {
             for (int i = 0; i < n.Length; i++)
                 yield return (char)n[i];
-        }
-
-        public static Markup FindChild(this Markup m, Func<Markup, bool> p)
-        {
-            try
-            {
-                if (p.Invoke(m))
-                    return m;
-                else if (m.Wrap != null)
-                    return m.Wrap.FindChild(p);
-                else if (m.Children != null && m.Children.Count() > 0)
-                    return m.Children.FindChild(p);
-                else
-                    return null;
-            }
-            catch (NullReferenceException)
-            {
-                return null;
-            }
-        }
-
-        public static Markup FindChild(this IEnumerable<Markup> m, Func<Markup, bool> p)
-        {
-            foreach (Markup m1 in m)
-                if (m1.FindChild(p) != null)
-                    return m1;
-            return null;
-        }
-
-        public static IEnumerable<Markup> FindChildren(this Markup m, Func<Markup, bool> p)
-        {
-            bool isCurrent = false;
-            try
-            {
-                if (p.Invoke(m))
-                    isCurrent = true;
-            }
-            catch (NullReferenceException) { }
-            if (isCurrent)
-                yield return m;
-            if (m.Wrap != null)
-                foreach (Markup m1 in m.Wrap.FindChildren(p))
-                    yield return m1;
-            if (m.Children != null && m.Children.Count() > 0)
-                foreach (Markup m2 in m.Children.FindChildren(p))
-                    yield return m2;
-        }
-
-        public static IEnumerable<Markup> FindChildren(this IEnumerable<Markup> m, Func<Markup, bool> p)
-        {
-            foreach (Markup m1 in m)
-                if (m1.FindChild(p) != null)
-                    yield return m1.FindChild(p);
         }
     }
 }

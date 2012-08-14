@@ -2,9 +2,7 @@
 {
     public sealed class BorderProperties
     {
-        public BorderProperties() { }
-
-        public BorderProperties(double? width, LineStyle style, string color, MarkupMetric metric)
+        public BorderProperties(double? width = null, LineStyle style = null, string color = null, MarkupMetric metric = null)
         {
             Width = width;
             Style = style;
@@ -12,7 +10,7 @@
             Metric = metric;
         }
 
-        public BorderProperties(double? width, LineStyle style, string color)
+        public BorderProperties(double? width = null, LineStyle style = null, string color = null)
         {
             Metric = MarkupMetric.Pixels;
             Width = width;
