@@ -9,7 +9,7 @@ namespace Html.Markup
         public static string UnescapeParameter(this string s)
         {
             if (!string.IsNullOrEmpty(s))
-                return Uri.UnescapeDataString(s);
+                return Uri.UnescapeDataString(s).UnencodeCharacters();
             else
                 return string.Empty;
         }
@@ -17,7 +17,8 @@ namespace Html.Markup
         {
             if (string.IsNullOrEmpty(s))
                 return s;
-            return s.Replace("&amp;", "&")  // ampersand
+            return s.Replace("&amp;", "&")   // ampersand
+                 .Replace("&#35;", "#")      // hash
                  .Replace("&lt;", "<")       // less than
                  .Replace("&gt;", ">")       // greater than
                  .Replace("&quot", "\"")     // left opening quotation
@@ -38,6 +39,7 @@ namespace Html.Markup
             if (string.IsNullOrEmpty(s))
                 return s;
             return s.Replace("&", "&amp;")  // ampersand
+                 .Replace("#","&#35;")      // hash
                  .Replace("<", "&lt;")      // less than
                  .Replace(">", "&gt;")      // greater than
                  .Replace("\"", "&quot")    // opening double quotation

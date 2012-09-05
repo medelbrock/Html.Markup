@@ -2,27 +2,7 @@
 {
     public sealed class Background
     {
-        public Background() { }
-
-        public Background(string color)
-        {
-            Color = color;
-        }
-
-        public Background(string color, string imageurl)
-        {
-            Color = color;
-            ImageUrl = imageurl;
-        }
-
-        public Background(string color, string imageurl, Coordinate position)
-        {
-            Color = color;
-            ImageUrl = imageurl;
-            Position = position;
-        }
-
-        public Background(string color, string imageurl, Coordinate position, BackgroundRepeat repeat)
+        public Background(string color = null, string imageurl = null, Coordinate position = null, BackgroundRepeat repeat = null)
         {
             Color = color;
             ImageUrl = imageurl;
